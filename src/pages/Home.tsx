@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -60,21 +61,32 @@ const testimonials = [
     role: "Protocol Office, Government of Rwanda",
   },
 ];
+function VideoBackground({ src }: { src: string }) {
+  return (
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      className="absolute inset-0 h-full w-full object-cover"
+    >
+      <source src={src} type="video/mp4" />
+    </video>
+  );
+}
 
 export default function Home() {
   return (
     <SiteShell>
      {/* ── Hero ── */}
       <section className="relative min-h-screen w-full overflow-hidden">
-        <img
-          src={heroStage}
-          alt="Concert stage with LED walls and stage lighting"
-          className="animate-ken-burns absolute inset-0 h-full w-full object-cover"
-          width={1920}
-          height={1080}
-        />
+                      <VideoBackground src="/ishyaevent_eq_web.mp4" />
+
+
         <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/50 to-ink/95" />
         <div className="absolute inset-0 bg-[radial-gradient(60%_40%_at_10%_20%,rgba(139,30,45,0.35),transparent_60%)]" />
+
 
         {/* Hero content */}
         <div className="container-x relative z-10 mx-auto flex max-w-7xl flex-col pt-36 pb-56 md:pt-48 md:pb-64">
